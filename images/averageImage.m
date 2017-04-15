@@ -7,4 +7,5 @@ for i=2:10 % Read in remaining images.
 end
 meanf = sum / 10;
 meanf = log(meanf) + 1;
+imagesc(meanf);
 end
