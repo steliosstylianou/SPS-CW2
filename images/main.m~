@@ -1,0 +1,28 @@
+featurematrix = [];
+for i = 1:10
+    class(i,1) = 1;
+    class(10+i,1) = 2;
+    class(20+i,1) = 3;
+end
+for i = 1:10
+    pic = fftv2(['S',num2str(i),'.GIF']);
+    modpic = log(pic) + 1;
+    featurematrix(i,1) = ftriangle(modpic);
+    featurematrix(i,2) = frectangle(modpic);
+    
+    pic = fftv2(['T',num2str(i),'.GIF']);
+    modpic = log(pic) + 1;
+    featurematrix(10+i,1) = ftriangle(modpic);
+    featurematrix(10+i,2) = frectangle(modpic);
+
+    pic = fftv2(['V',num2str(i),'.GIF']);
+    modpic = log(pic) + 1;
+    featurematrix(20+i,1) = ftriangle(modpic);
+    featurematrix(20+i,2) = frectangle(modpic);
+end
+
+    featurematrix = log(log(featurematrix));
+    mdl = fitcknn(featurematrix, class, 'NumNeighbors', 3);
+    [x,y] = meshgrid(2.3:0.005:2.36, 2.27:0.005:2.36);
+    label = predict(mdl,[x(:),y(:)])
+    countour(x,y,
