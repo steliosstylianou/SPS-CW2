@@ -15,14 +15,16 @@ for i = 1:10
     trainfeat(10+i,1) = ftriangle(modpic);
     trainfeat(10+i,2) = frectangle(modpic);
 
+    
     pic = fftv2(['V',num2str(i),'.GIF']);
     modpic = log(pic) + 1;
     trainfeat(20+i,1) = ftriangle(modpic);
-    trainfeat(20+i,2) = frectangle(modpic);    
+    trainfeat(20+i,2) = frectangle(modpic);  
+
 end
 
 trainfeat = log(log(trainfeat));
-mdl = fitcknn(trainfeat, class, 'NumNeighbors', 5);
+mdl = fitcknn(trainfeat, class, 'NumNeighbors', 3);
 
 %creating mesh range
 xrange = [2.27 2.37]; yrange = [2.27 2.37];
@@ -72,3 +74,20 @@ scatter(testfeat(11:15,1),testfeat(11:15,2),'b');
 scatter(trainfeat(1:10,1),trainfeat(1:10,2),'r','*');
 scatter(trainfeat(11:20,1),trainfeat(11:20,2),'g','*');
 scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
+
+pic = fftv2('A1.GIF');
+modpic = log(pic) + 1;
+addfeat(1,1) = ftriangle(modpic);
+addfeat(1,2) = frectangle(modpic);
+
+pic = fftv2('B1.GIF');
+modpic = log(pic) + 1;
+addfeat(2,1) = ftriangle(modpic);
+addfeat(2,2) = frectangle(modpic);
+
+
+scatter(addfeat(1,1),addfeat(1,2),20,'c');
+scatter(addfeat(2,1),addfeat(2,2),20,'c');
+
+
+
