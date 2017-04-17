@@ -48,3 +48,5 @@ pic = fftv2('B1.GIF');
 modpic = log(pic) + 1;
 addfeat(2,1) = ftriangle(modpic);
 addfeat(2,2) = frectangle(modpic);
+
+addfeat = log(log(addfeat));
