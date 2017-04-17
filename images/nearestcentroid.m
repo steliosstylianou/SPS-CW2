@@ -30,7 +30,6 @@ colormap(cmap);
 testlabel = predict(mdl,testfeat);
 trainlabel = predict(mdl,trainfeat);
 
-
 scatter(testfeat(1:5,1),testfeat(1:5,2), 'r');
 scatter(testfeat(6:10,1),testfeat(6:10,2),'g');
 scatter(testfeat(11:15,1),testfeat(11:15,2),'b');
