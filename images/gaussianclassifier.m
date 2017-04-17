@@ -23,10 +23,6 @@ cova = cov(xa);
 covb = cov(xb);
 covc = cov(xc);
 
-cova = eye(2);
-covb = eye(2);
-covc = eye(2);
-
 testa = testfeat(1:5,:);
 testb = testfeat(6:10,:);
 testc = testfeat(11:15,:);
@@ -88,4 +84,4 @@ hold on;
 contour(X,Y,ratioP1P2,[1,1],'g');
 contour(X,Y,ratioP2P3,[1,1],'b');
 contour(X,Y,ratioP1P3,[1,1],'r');
-
+colormap(hot);
