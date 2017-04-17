@@ -27,8 +27,11 @@ testa = testfeat(1:5,:);
 testb = testfeat(6:10,:);
 testc = testfeat(11:15,:);
 
-testaOut = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
-[maxaOut, class] = max(testaOut,[],2);
+testaOutTest = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
+[maxaOutTest, class] = max(testaOutTest,[],2);
+
+testaOutAB = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
+[maxaOutAB, class] = max(testaOutAB,[],2);
 
 xsd1 = std(xa(:,1));
 xsd2 = std(xb(:,1));
@@ -67,11 +70,9 @@ P3 = (1/E3) * exp(-3);
 
 hold on;
 
-contour(X,Y,z1,[P1,P1]);
-contour(X,Y,z2,[P2,P2]);
-contour(X,Y,z3,[P3,P3]);
-
-hold off;
+contour(X,Y,z1,[P1,P1],'r');
+contour(X,Y,z2,[P2,P2],'g');
+contour(X,Y,z3,[P3,P3],'b');
 
 ratioP1P2 = z1./z2;
 
@@ -79,9 +80,8 @@ ratioP2P3 = z2./z3;
 
 ratioP1P3 = z3./z1;
 
-
 hold on;
-contour(X,Y,ratioP1P2,[1,1],'g');
-contour(X,Y,ratioP2P3,[1,1],'b');
-contour(X,Y,ratioP1P3,[1,1],'r');
+contour(X,Y,ratioP1P2,[1,1],'r');
+contour(X,Y,ratioP2P3,[1,1],'g');
+contour(X,Y,ratioP1P3,[1,1],'b');
 colormap(hot);

@@ -27,7 +27,10 @@ testa = testfeat(1:5,:);
 testb = testfeat(6:10,:);
 testc = testfeat(11:15,:);
 
-testaOut = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
+testaOutTest = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
+[maxaOutTe, class] = max(testaOut,[],2);
+
+testaOutAB = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
 [maxaOut, class] = max(testaOut,[],2);
 
 xsd1 = std(xa(:,1));
@@ -42,19 +45,19 @@ maxsd1 = max(xsd1,ysd1);
 maxsd2 = max(xsd2,ysd2);
 maxsd3 = max(xsd3,ysd3);
 
-x = linspace(,10,101);
+x = linspace(2.27,2.37,1000);
 y = linspace(2.27,2.37,1000);
 
-[X,Y] = 
+[X,Y] = meshgrid(x,y);
 
 
-z1 = mvnpdf(x1y1, mua, cova);
-z2 = mvnpdf(x2y2, mub, covb);
-z3 = mvnpdf(x3y3, muc, covc);
+z1 = mvnpdf([X(:),Y(:)], mua, cova);
+z2 = mvnpdf([X(:),Y(:)], mub, covb);
+z3 = mvnpdf([X(:),Y(:)], muc, covc);
 
-z1 = reshape(z1, size(x1));
-z2 = reshape(z2, size(x2));
-z3 = reshape(z3, size(x3));
+z1 = reshape(z1, size(X));
+z2 = reshape(z2, size(X));
+z3 = reshape(z3, size(X));
 % Compute value of Gaussian pdf at each point in the grid
 
 
@@ -67,11 +70,20 @@ P3 = (1/E3) * exp(-3);
 
 hold on;
 
-contour(x1,y1,z1,E1);
-contour(x2,y2,z2,E2);
-contour(x3,y3,z3,E3);
+contour(X,Y,z1,[P1,P1]);
+contour(X,Y,z2,[P2,P2]);
+contour(X,Y,z3,[P3,P3]);
 
+hold off;
 
+ratioP1P2 = z1./z2;
 
+ratioP2P3 = z2./z3;
 
+ratioP1P3 = z3./z1;
 
+hold on;
+contour(X,Y,ratioP1P2,[1,1],'g');
+contour(X,Y,ratioP2P3,[1,1],'b');
+contour(X,Y,ratioP1P3,[1,1],'r');
+colormap(hot);

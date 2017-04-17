@@ -4,7 +4,7 @@ for i = 1:10
     class(20+i,1) = 3;
 end
 
-mdl = fitcknn(trainfeat, class, 'NumNeighbors', 3);
+mdl = fitcknn(trainfeat, class, 'NumNeighbors', 8);
 
 %creating mesh range
 xrange = [2.27 2.37]; yrange = [2.27 2.37];

@@ -25,25 +25,10 @@ set(gca,'ydir','normal');
 % class 1 = light red, 2 = light green, 3 = light blue
 cmap = [1 0.8 0.8; 0.95 1 0.95; 0.9 0.9 1]
 colormap(cmap);
-hold on;
-
-for i=1:5
-    pic = fftv2(['S',num2str(10+i),'.gif']);
-    modpic = log(pic) + 1;
-    testfeat(i,1) = ftriangle(modpic);
-    testfeat(i,2) = frectangle(modpic);
-    
-    pic = fftv2(['T',num2str(10+i),'.gif']);
-    modpic = log(pic) + 1;
-    testfeat(5+i,1) = ftriangle(modpic);
-    testfeat(5+i,2) = frectangle(modpic);
-
-    pic = fftv2(['V',num2str(10+i),'.gif']);
-    modpic = log(pic) + 1;
-    testfeat(10+i,1) = ftriangle(modpic);
-    testfeat(10+i,2) = frectangle(modpic);    
-end
-    
-testfeat = log(log(testfeat));
 testlabel = predict(mdl,testfeat);
 trainlabel = predict(mdl,trainfeat);
+
+scatter(trainfeat(1:10,1),trainfeat(1:10,2),'r','*');
+scatter(trainfeat(11:20,1),trainfeat(11:20,2),'g','*');
+scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
+

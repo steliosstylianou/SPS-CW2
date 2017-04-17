@@ -48,9 +48,3 @@ pic = fftv2('B1.GIF');
 modpic = log(pic) + 1;
 addfeat(2,1) = ftriangle(modpic);
 addfeat(2,2) = frectangle(modpic);
-
-hold on;
-
-scatter(trainfeat(1:10,1),trainfeat(1:10,2),'r','*');
-scatter(trainfeat(11:20,1),trainfeat(11:20,2),'g','*');
-scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
