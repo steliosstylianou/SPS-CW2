@@ -11,10 +11,6 @@ cova = cov(xa);
 covb = cov(xb);
 covc = cov(xc);
 
-testa = testfeat(1:5,:);
-testb = testfeat(6:10,:);
-testc = testfeat(11:15,:);
-
 testaOutTest = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testfeat,muc,covc)];
 [maxaOutTest, classTest] = max(testaOutTest,[],2);
 
@@ -32,14 +28,10 @@ testaOutPlot = [mvnpdf(xy,mua,cova),mvnpdf(xy,mub,covb),mvnpdf(xy,muc,covc)];
 
 map = reshape(classPlot, size(X)); 
 %display boundaries
-imagesc([2.25 2.50],[2.25 2.50],map);
-hold on;
+
 %reverse y axis
 set(gca,'ydir','normal');
-% colormap for the classes:
-% class 1 = light red, 2 = light green, 3 = light blue
-cmap = [1 0.8 0.8; 0.95 1 0.95; 0.9 0.9 1]
-colormap(cmap);
+
 
 z1 = mvnpdf([X(:),Y(:)], mua, cova);
 z2 = mvnpdf([X(:),Y(:)], mub, covb);
@@ -51,7 +43,6 @@ z2 = reshape(z2, size(X));
 z3 = reshape(z3, size(X));
 % Compute value of Gaussian pdf at each point in the grid
 
-
 E1 = 2*pi * sqrt(det(cova));
 P1 = (1/E1) * exp(-3);
 E2 = 2*pi * sqrt(det(covb));
@@ -59,24 +50,35 @@ P2 = (1/E2) * exp(-3);
 E3 = 2*pi * sqrt(det(covc));
 P3 = (1/E3) * exp(-3);
 
+ratioP1P2 = z1./z2;
+
+ratioP2P3 = z2./z3;
+
+ratioP1P3 = z3./z1;
+
+
+hold on;
+
+%imagesc([2.25 2.40],[2.25 2.40],map);
+contour(X,Y,ratioP1P2,[1,1]);
+contour(X,Y,ratioP2P3,[1,1]);
+contour(X,Y,ratioP1P3,[1,1]);
+contour(X,Y,z1,[P1,P1]);
+contour(X,Y,z2,[P2,P2]);
+contour(X,Y,z3,[P3,P3]);
+
+
+
 %elipsoids
-contour(X,Y,z1,[P1,P1],'r');
-contour(X,Y,z2,[P2,P2],'g');
-contour(X,Y,z3,[P3,P3],'b');
-
-
-
-scatter(testfeat(1:5,1),testfeat(1:5,2), 'r');
-scatter(testfeat(6:10,1),testfeat(6:10,2),'g');
-scatter(testfeat(11:15,1),testfeat(11:15,2),'b');
-
 scatter(trainfeat(1:10,1),trainfeat(1:10,2),'r','*');
 scatter(trainfeat(11:20,1),trainfeat(11:20,2),'g','*');
 scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
 
 
+%scatter(testfeat(1:5,1),testfeat(1:5,2), 'r');
+scatter(testfeat(6:10,1),testfeat(6:10,2),'g');
+scatter(testfeat(11:15,1),testfeat(11:15,2),'b');
+
+
 scatter(addfeat(1,1),addfeat(1,2),20,'c','*');
 scatter(addfeat(2,1),addfeat(2,2),20,'c');
-
-
-
