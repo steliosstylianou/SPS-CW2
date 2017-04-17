@@ -42,12 +42,27 @@ maxsd1 = max(xsd1,ysd1);
 maxsd2 = max(xsd2,ysd2);
 maxsd3 = max(xsd3,ysd3);
 
-[x,y] = meshgrid(xmu1-2*maxsd1:0.01:xmu1+2*maxsd1,ymu1-2*maxsd1:0.01:ymu1+2*maxsd1);
-
+[x1,y1] = meshgrid(xmu1-2*maxsd1:0.01:xmu1+2*maxsd1,ymu1-2*maxsd1:0.01:ymu1+2*maxsd1);
+x1y1 = [x1(:) y1(:)];
 %X1Y1 = reshape(X1Y1, size(mua));
 % Compute value of Gaussian pdf at each point in the grid
-z1 = mvnpdf([X1, Y1], mua, covara);
-surf(x1,y1,z1);
-figure;
+
+[x2,y2] = meshgrid(xmu2-2*maxsd2:0.01:xmu2+2*maxsd2,ymu2-2*maxsd2:0.01:ymu2+2*maxsd2);
+x2y2 = [x2(:) y2(:)];
+
+[x3,y3] = meshgrid(xmu3-2*maxsd3:0.01:xmu3+2*maxsd3,ymu3-2*maxsd3:0.01:ymu3+2*maxsd3);
+x3y3 = [x3(:) y3(:)];
+
+z1 = mvnpdf(x1y1, mua, covara);
+z2 = mvnpdf(x2y2, mub, covarb);
+z3 = mvnpdf(x3y3, mub, covarb);
+
+hold on;
+
 contour(x1,y1,z1);
+contour(x1,y1,z1);
+contour(x1,y1,z1);
+
+
+
 
