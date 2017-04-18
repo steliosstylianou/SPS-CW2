@@ -32,7 +32,7 @@ map = reshape(classPlot, size(X));
 
 %reverse y axis
 set(gca,'ydir','normal');
-cmap = [1 0.8 0.8; 0.95 1 0.95; 0.9 0.9 1]
+cmap = [0.9765 0.6039 0.6039; 0.8157 0.9765 0.6039; 0.6039 0.9020 0.9765]
 colormap(cmap);
 
 z1 = mvnpdf([X(:),Y(:)], mua, cova);
