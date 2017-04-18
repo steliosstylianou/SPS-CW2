@@ -17,8 +17,8 @@ testaOutTest = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testf
 testaOutAB = [mvnpdf(addfeat,mua,cova),mvnpdf(addfeat,mub,covb),mvnpdf(addfeat,muc,covc)];
 [maxaOutAB, classAB] = max(testaOutAB,[],2);
 
-x = linspace(2.25,2.40,1000);
-y = linspace(2.25,2.40,1000);
+x = linspace(2.29,2.39,1000);
+y = linspace(2.26,2.36,1000);
 
 [X,Y] = meshgrid(x,y);
 xy = [X(:) Y(:)]; 
