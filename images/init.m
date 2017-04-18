@@ -20,20 +20,20 @@ end
 trainfeat = log(log(trainfeat));
 
 for i=1:10
-    pic = fftv2(['S',num2str(10+i),'.gif']);
+    pic = fftv2(['S',num2str(10+i),'.GIF']);
     modpic = log(pic) + 1;
     testfeat(i,1) = ftriangle(modpic);
     testfeat(i,2) = frectangle(modpic);
     
-    pic = fftv2(['T',num2str(10+i),'.gif']);
-    modpic = log(pic) + 1;
-    testfeat(5+i,1) = ftriangle(modpic);
-    testfeat(5+i,2) = frectangle(modpic);
-
-    pic = fftv2(['V',num2str(10+i),'.gif']);
+    pic = fftv2(['T',num2str(10+i),'.GIF']);
     modpic = log(pic) + 1;
     testfeat(10+i,1) = ftriangle(modpic);
-    testfeat(10+i,2) = frectangle(modpic);    
+    testfeat(10+i,2) = frectangle(modpic);
+
+    pic = fftv2(['V',num2str(10+i),'.GIF']);
+    modpic = log(pic) + 1;
+    testfeat(20+i,1) = ftriangle(modpic);
+    testfeat(20+i,2) = frectangle(modpic);    
 end
     
 testfeat = log(log(testfeat));
@@ -52,8 +52,8 @@ addfeat = log(log(addfeat));
 
 hold on;
 scatter(testfeat(1:5,1),testfeat(1:5,2), 'r');
-scatter(testfeat(6:10,1),testfeat(6:10,2),'g');
-scatter(testfeat(11:15,1),testfeat(11:15,2),'b');
+scatter(testfeat(11:15,1),testfeat(11:15,2),'g');
+scatter(testfeat(21:25,1),testfeat(21:25,2),'b');
 
 scatter(trainfeat(1:10,1),trainfeat(1:10,2),'r','*');
 scatter(trainfeat(11:20,1),trainfeat(11:20,2),'g','*');
