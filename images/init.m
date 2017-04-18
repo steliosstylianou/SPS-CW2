@@ -51,7 +51,7 @@ addfeat(2,2) = frectangle(modpic);
 addfeat = log(log(addfeat));
 
 hold on;
-scatter(testfeat(1:5,1),testfeat(1:5,2), 'r');
+scatter(testfeat(1:6,1),testfeat(1:6,2), 'r');
 scatter(testfeat(11:15,1),testfeat(11:15,2),'g');
 scatter(testfeat(21:25,1),testfeat(21:25,2),'b');
 
