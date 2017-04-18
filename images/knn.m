@@ -22,6 +22,8 @@ imagesc(xrange,yrange,decisionmap);
 hold on;
 %reverse y axis
 set(gca,'ydir','normal');
+cmap = [1 0.8 0.8; 0.95 1 0.95; 0.9 0.9 1]
+colormap(cmap);
 
 testlabel = predict(mdl,testfeat);
 trainlabel = predict(mdl,trainfeat);
