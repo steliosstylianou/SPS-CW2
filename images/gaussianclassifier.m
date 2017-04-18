@@ -37,7 +37,6 @@ z1 = mvnpdf([X(:),Y(:)], mua, cova);
 z2 = mvnpdf([X(:),Y(:)], mub, covb);
 z3 = mvnpdf([X(:),Y(:)], muc, covc);
 
-
 z1 = reshape(z1, size(X));
 z2 = reshape(z2, size(X));
 z3 = reshape(z3, size(X));
@@ -74,11 +73,9 @@ scatter(trainfeat(1:10,1),trainfeat(1:10,2),'r','*');
 scatter(trainfeat(11:20,1),trainfeat(11:20,2),'g','*');
 scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
 
-
 %scatter(testfeat(1:5,1),testfeat(1:5,2), 'r');
 scatter(testfeat(6:10,1),testfeat(6:10,2),'g');
 scatter(testfeat(11:15,1),testfeat(11:15,2),'b');
-
 
 scatter(addfeat(1,1),addfeat(1,2),20,'c','*');
 scatter(addfeat(2,1),addfeat(2,2),20,'c');
