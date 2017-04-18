@@ -59,14 +59,10 @@ ratioP1P3 = z3./z1;
 
 
 hold on;
-
-%imagesc([2.25 2.40],[2.25 2.40],map);
-contour(X,Y,ratioP1P2,[1,1]);
-contour(X,Y,ratioP2P3,[1,1]);
-contour(X,Y,ratioP1P3,[1,1]);
-contour(X,Y,z1,[P1,P1]);
-contour(X,Y,z2,[P2,P2]);
-contour(X,Y,z3,[P3,P3]);
+imagesc([2.29 2.39],[2.26 2.36],map);
+%contour(X,Y,ratioP1P2,[1,1]);
+%contour(X,Y,ratioP2P3,[1,1]);
+%contour(X,Y,ratioP1P3,[1,1]);
 
 
 
@@ -82,3 +78,9 @@ scatter(testfeat(21:30,1),testfeat(21:30,2),'b');
 
 scatter(addfeat(1,1),addfeat(1,2),20,'c','*');
 scatter(addfeat(2,1),addfeat(2,2),20,'c');
+%figure;
+
+
+contour(X,Y,z1,[P1,P1],'r');
+contour(X,Y,z2,[P2,P2],'g');
+contour(X,Y,z3,[P3,P3],'b');
