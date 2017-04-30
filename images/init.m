@@ -60,7 +60,13 @@ scatter(addfeat(2,1),addfeat(2,2),20,'c');
 allfeat = [trainfeat; testfeat; addfeat];
 minfeat = min(allfeat);
 maxfeat = max(allfeat);
+diffeat = maxfeat - minfeat;
 
-testfeat = (testfeat - minfeat) ./ (maxfeat - minfeat);
-addfeat = (addfeat - minfeat) ./ (maxfeat - minfeat);
-trainfeat = (trainfeat - minfeat) ./ (maxfeat - minfeat);
+testfeat = bsxfun(@minus,testfeat, minfeat);
+testfeat = bsxfun(@rdivide, testfeat, diffeat);
+
+addfeat = bsxfun(@minus, addfeat, minfeat);
+addfeat = bsxfun(@rdivide,addfeat, diffeat);
+
+trainfeat = bsxfun(@minus,trainfeat, minfeat);
+trainfeat = bsxfun(@rdivide, trainfeat, diffeat);
