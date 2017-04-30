@@ -57,16 +57,12 @@ scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
 scatter(addfeat(1,1),addfeat(1,2),20,'c','*');
 scatter(addfeat(2,1),addfeat(2,2),20,'c');
 
-allfeat = [trainfeat; testfeat; addfeat];
-minfeat = min(allfeat);
-maxfeat = max(allfeat);
-diffeat = maxfeat - minfeat;
+testfeat  = bsxfun(@minus, testfeat,mean(trainfeat));
+testfeat  = bsxfun(@rdivide, testfeat,std(trainfeat));
 
-testfeat = bsxfun(@minus,testfeat, minfeat);
-testfeat = bsxfun(@rdivide, testfeat, diffeat);
+addfeat  = bsxfun(@minus, addfeat,mean(trainfeat));
+addfeat  = bsxfun(@rdivide, addfeat,std(trainfeat));
 
-addfeat = bsxfun(@minus, addfeat, minfeat);
-addfeat = bsxfun(@rdivide,addfeat, diffeat);
+trainfeat  = bsxfun(@minus, trainfeat,mean(trainfeat));
+trainfeat  = bsxfun(@rdivide, trainfeat,std(trainfeat));
 
-trainfeat = bsxfun(@minus,trainfeat, minfeat);
-trainfeat = bsxfun(@rdivide, trainfeat, diffeat);

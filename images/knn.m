@@ -7,10 +7,10 @@ end
 mdl = fitcknn(trainfeat, class, 'NumNeighbors', 5);
 
 %creating mesh range
-xrange = [-0.1 1.1]; yrange = [-0.1 1.1];
+xrange = [-2 2]; yrange = [-2 2];
 %specify step for image's resolution
 step = 0.001;
-[x,y] = meshgrid(-0.1:step:1.1, -0.1:step:1.1);
+[x,y] = meshgrid(-2:step:2, -2:step:2);
 image_size = size(x);
 
 xy = [x(:) y(:)]; 
