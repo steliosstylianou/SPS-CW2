@@ -6,7 +6,7 @@ centroidV  = mean(trainfeat(21:30,:));
 figure;
 xrange = [-0.1 1.1]; yrange = [-0.1 1.1];
 %specify step for image's resolution
-step = 0.001;
+step = 0.005;
 
 [x,y] = meshgrid(-0.1:step:1.1, -0.1:step:1.1);
 image_size = size(x);

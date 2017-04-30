@@ -26,7 +26,6 @@ cmap = [0.9765 0.6039 0.6039; 0.8157 0.9765 0.6039; 0.6039 0.9020 0.9765]
 colormap(cmap);
 
 testlabel = predict(mdl,testfeat);
-trainlabel = predict(mdl,trainfeat);
 
 scatter(testfeat(1:10,1),testfeat(1:10,2), 'r');
 scatter(testfeat(11:20,1),testfeat(11:20,2),'g');
