@@ -7,15 +7,15 @@ end
 mdl = fitcknn(trainfeat, class, 'NumNeighbors', 5);
 
 %creating mesh range
-xrange = [2.29 2.39]; yrange = [2.26 2.36];
+xrange = [-0.1 1.1]; yrange = [-0.1 1.1];
 %specify step for image's resolution
-step = 0.0001;
-[x,y] = meshgrid(2.29:step:2.39, 2.26:step:2.36);
+step = 0.001;
+[x,y] = meshgrid(-0.1:step:1.1, -0.1:step:1.1);
 image_size = size(x);
 
 xy = [x(:) y(:)]; 
 %getting a label for every point
-label = predict(mdl,[x(:),y(:)])
+label = predict(mdl,[x(:),y(:)]);
 decisionmap = reshape(label, image_size); 
 %display boundaries
 imagesc(xrange,yrange,decisionmap);
