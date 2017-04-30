@@ -17,8 +17,8 @@ testaOutTest = [mvnpdf(testfeat,mua,cova),mvnpdf(testfeat,mub,covb),mvnpdf(testf
 testaOutAB = [mvnpdf(addfeat,mua,cova),mvnpdf(addfeat,mub,covb),mvnpdf(addfeat,muc,covc)];
 [maxaOutAB, classAB] = max(testaOutAB,[],2);
 
-x = linspace(2.29,2.39,1000);
-y = linspace(2.26,2.36,1000);
+x = linspace(-0.1,1.1,1000);
+y = linspace(-0.1,1.1,1000);
 
 [X,Y] = meshgrid(x,y);
 xy = [X(:) Y(:)]; 
@@ -59,7 +59,7 @@ ratioP1P3 = z3./z1;
 
 
 hold on;
-imagesc([2.29 2.39],[2.26 2.36],map);
+imagesc([-0.1 1.1],[-0.1 1.1],map);
 %contour(X,Y,ratioP1P2,[1,1]);
 %contour(X,Y,ratioP2P3,[1,1]);
 %contour(X,Y,ratioP1P3,[1,1]);

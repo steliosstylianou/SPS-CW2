@@ -6,7 +6,7 @@ f = (abs(q)); % magnitude spectrum
 %Phaseq=angle(q); % phase spectrum
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Usually for viewing purposes
-%imagesc(log(abs(q)+1));
+imagesc(log(abs(q)+1));
 %figure;
 %imagesc(log(abs(q.^2)+1));
 %colorbar;
