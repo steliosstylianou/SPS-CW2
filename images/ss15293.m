@@ -1,5 +1,5 @@
 function [classes] = ss15293(classifier_num) 
-% (classifier_num = 1 -> KNN, 2-> NEAREST CENTROID, 3->GAUSSIAN)
+% (classifier_num = 1 -> KNN, 2-> NEAREST CENTROID (slow so requires time, 3->GAUSSIAN)
 
 %read and extract features from all images
 for i = 1:10
@@ -356,7 +356,7 @@ scatter(trainfeat(21:30,1),trainfeat(21:30,2),'b','*');
 scatter(addfeat(1,1),addfeat(1,2),20,'c','*');
 scatter(addfeat(2,1),addfeat(2,2),20,'c');
 voronoi([centroidS(:, 1); centroidT(:, 1); centroidV(:, 1);], [centroidS(:, 2); centroidT(:, 2); centroidV(:, 2);]);
-axis([-2 2.2 -2 2.2]);
+axis([-2 2.2 -2 2]);
 classes = nearcen(testfeat,centroidS,centroidT,centroidV,30);
 
 
